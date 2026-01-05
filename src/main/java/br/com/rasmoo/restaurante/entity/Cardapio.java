@@ -21,6 +21,15 @@ public class Cardapio {
 
     private BigDecimal valor;
 
+    //cardinalidade
+    /*
+    * ManyToOne
+    * ManyToMany
+    * OneToMany
+    * OneToOne*/
+    @ManyToOne
+    private Categoria categoria;
+
     @Column(name = "data_de_registro")
     private LocalDateTime dataDeRegistro = LocalDateTime.now();
 
