@@ -18,11 +18,27 @@ public class PratoService {
         risoto.setDisponivel(true);
         risoto.setValor(BigDecimal.valueOf(85.50));
 
+        Prato bacalhau = new Prato();
+        bacalhau.setNome("Bacalhau");
+        bacalhau.setDescricao("Um prato típico Português, com anchovas e molho branco.");
+        bacalhau.setDisponivel(true);
+        bacalhau.setValor(BigDecimal.valueOf(97.50));
+
         EntityManager entityManager = JPAUtil.getEntityManagerRasFood();
         PratoDAO pratoDAO = new PratoDAO(entityManager);
         entityManager.getTransaction().begin();
         pratoDAO.cadastrar(risoto);
-        entityManager.getTransaction().commit();
-        entityManager.close();
+        entityManager.flush();
+        pratoDAO.cadastrar(bacalhau);
+        entityManager.flush();
+        System.out.println("O prato consultado foi: " + pratoDAO.consultar(1));
+
+        pratoDAO.excluir(bacalhau);
+        System.out.println("O prato consultado foi: " + pratoDAO.consultar(2));
+
+        entityManager.clear();
+        risoto.setValor(BigDecimal.valueOf(75.50));
+        pratoDAO.atualizar(risoto);
+        System.out.println("O prato consultado foi: " + pratoDAO.consultar(1));
     }
 }
