@@ -11,19 +11,19 @@ public class CategoriaDAO {
         this.entityManager = entityManager;
     }
 
-    public void cadastrarCategoria(final Categoria categoria) {
+    public void cadastrar(final Categoria categoria) {
         this.entityManager.persist(categoria);
     }
 
-    public Categoria consultarCategoria(final Integer id) {
+    public Categoria consultar(final Integer id) {
         return this.entityManager.find(Categoria.class, id);
     }
 
-    public void atualizarCategoria(final Categoria categoria) {
+    public void atualizar(final Categoria categoria) {
         this.entityManager.merge(categoria);
     }
 
-    public void excluirCategoria(final Categoria categoria) {
+    public void excluir(final Categoria categoria) {
         this.entityManager.remove(categoria);
     }
 }
