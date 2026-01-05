@@ -3,11 +3,11 @@ package br.com.rasmoo.restaurante.dao;
 import br.com.rasmoo.restaurante.entity.Cardapio;
 import jakarta.persistence.EntityManager;
 
-public class PratoDAO {
+public class CardapioDAO {
 
     private final EntityManager entityManager;
 
-    public PratoDAO(EntityManager entityManager) {
+    public CardapioDAO(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
 

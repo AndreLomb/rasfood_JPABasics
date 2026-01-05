@@ -1,13 +1,13 @@
 package br.com.rasmoo.restaurante.service.teste;
 
-import br.com.rasmoo.restaurante.dao.PratoDAO;
+import br.com.rasmoo.restaurante.dao.CardapioDAO;
 import br.com.rasmoo.restaurante.entity.Cardapio;
 import br.com.rasmoo.restaurante.util.JPAUtil;
 import jakarta.persistence.EntityManager;
 
 import java.math.BigDecimal;
 
-public class PratoService {
+public class CardapioService {
     public static void main(String[] args) {
 
         Cardapio risoto = new Cardapio();
@@ -23,20 +23,20 @@ public class PratoService {
         bacalhau.setValor(BigDecimal.valueOf(97.50));
 
         EntityManager entityManager = JPAUtil.getEntityManagerRasFood();
-        PratoDAO pratoDAO = new PratoDAO(entityManager);
+        CardapioDAO cardapioDAO = new CardapioDAO(entityManager);
         entityManager.getTransaction().begin();
-        pratoDAO.cadastrar(risoto);
+        cardapioDAO.cadastrar(risoto);
         entityManager.flush();
-        pratoDAO.cadastrar(bacalhau);
+        cardapioDAO.cadastrar(bacalhau);
         entityManager.flush();
-        System.out.println("O prato consultado foi: " + pratoDAO.consultar(1));
+        System.out.println("O prato consultado foi: " + cardapioDAO.consultar(1));
 
-        pratoDAO.excluir(bacalhau);
-        System.out.println("O prato consultado foi: " + pratoDAO.consultar(2));
+        cardapioDAO.excluir(bacalhau);
+        System.out.println("O prato consultado foi: " + cardapioDAO.consultar(2));
 
         entityManager.clear();
         risoto.setValor(BigDecimal.valueOf(75.50));
-        pratoDAO.atualizar(risoto);
-        System.out.println("O prato consultado foi: " + pratoDAO.consultar(1));
+        cardapioDAO.atualizar(risoto);
+        System.out.println("O prato consultado foi: " + cardapioDAO.consultar(1));
     }
 }
