@@ -20,7 +20,6 @@ public class PratoDAO {
 
     public void cadastrar(final Prato prato) {
         this.entityManager.persist(prato);
-        System.out.println("Entidade cadastrada: " + prato);
     }
 
     public Prato consultar(final Integer id){
