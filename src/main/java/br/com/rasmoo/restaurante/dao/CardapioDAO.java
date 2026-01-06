@@ -3,6 +3,8 @@ package br.com.rasmoo.restaurante.dao;
 import br.com.rasmoo.restaurante.entity.Cardapio;
 import jakarta.persistence.EntityManager;
 
+import java.util.List;
+
 public class CardapioDAO {
 
     private final EntityManager entityManager;
@@ -22,8 +24,13 @@ public class CardapioDAO {
         this.entityManager.persist(cardapio);
     }
 
-    public Cardapio consultar(final Integer id){
+    public Cardapio consultarPorId(final Integer id){
         return this.entityManager.find(Cardapio.class, id);
+    }
+
+    public List<Cardapio> consultarTodos(){
+        String sql = "SELECT c FROM Cardapio c";
+        return this.entityManager.createQuery(sql, Cardapio.class).getResultList();
     }
 
     public void atualizar(final Cardapio cardapio) {
